@@ -9,7 +9,7 @@ FactoryGirl.define do
     factory :menu_with_items do
 
       ignore do
-        menu_item_number 5
+        menu_item_number 1
       end
 
       after(:create) do |menu, evaluator|
@@ -18,13 +18,12 @@ FactoryGirl.define do
     end
   end
 
-  factory :menu_item do 
+  factory :menu_item do
     name { "Hamburger" }
     description { "very tasty" }
     price { 70.42 }
     menu
   end
-
 
 end
 

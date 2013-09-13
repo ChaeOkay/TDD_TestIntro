@@ -17,12 +17,12 @@ describe "Menus Controller", :type => :controller do
     it "creates a menu with valid attributes" do
       expect {
         valid_menu
-        post '/menus'  
+        post '/menus'
       }.to change(Menu, :count)
     end
 
     it "includes menu name" do
-      post '/menus' 
+      post '/menus'
       expect(last_response.body).to include(valid_menu.name)
     end
   end
@@ -32,24 +32,24 @@ describe "Menus Controller", :type => :controller do
     it "doesn't create a menu with invalid attributes" do
       expect {
         invalid_menu
-        post '/menus'  
+        post '/menus'
       }.to_not change(Menu, :count)
 
-      # post '/menus' 
+      # post '/menus'
       # expect(last_response.body).not_to include("bad menu")
     end
 
     it "shows errors" do
-      post '/menus' 
+      post '/menus'
       expect(last_response.body).to include("Description can't be blank")
     end
       # post '/menus'
       # invalid_menu.valid?
-      # invalid_menu.errors.empty?.should_not be_true 
+      # invalid_menu.errors.empty?.should_not be_true
   end
 
   context "show menu" do
-    let!(:menu) { FactoryGirl.create :menu }
+    let!(:menu) { FactoryGirl.create :menu_with_items }
 
     it "displays the menu name" do
       get "/menus/#{menu.id}"
@@ -66,7 +66,7 @@ describe "Menus Controller", :type => :controller do
     end
     it "displays a list of all menu items" do
       get "/menus/#{menu.id}"
-      expect(last_response.body).to include()
+      expect(last_response.body).to include("Hamburger")
     end
   end
 end
