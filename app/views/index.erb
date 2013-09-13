@@ -1,0 +1,8 @@
+<h1>Welcome to Awesome Menus!</h1>
+<ul>
+  <% @menus.each do |menu| %>
+    <li><a href=<%="/menus/#{menu.id}"%> ><%= menu.name %></a></li>
+  <% end %>
+</ul>
+<%= erb :_menu_form %>
+

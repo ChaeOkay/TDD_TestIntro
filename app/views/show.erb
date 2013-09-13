@@ -1,0 +1,10 @@
+<h1><%= @menu.name %></h1>
+<p><%= @menu.description %></p>
+<p><%= @menu.start_at.strftime("%d-%m-%Y") %></p>
+<p><%= @menu.end_at.strftime("%d-%m-%Y")  %></p>
+<h2>Menu Items</h2>
+<ul>
+  <% @items.each do |item| %>
+    <li><%= item.name %></li>
+  <% end %>
+</ul>
