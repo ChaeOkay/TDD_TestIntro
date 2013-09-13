@@ -7,9 +7,8 @@ FactoryGirl.define do
     end_at {Time.now + 100000}
 
     factory :menu_with_items do
-
       ignore do
-        menu_item_number 1
+        menu_item_number 5
       end
 
       after(:create) do |menu, evaluator|

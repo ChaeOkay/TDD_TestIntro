@@ -53,6 +53,7 @@ describe "Menus Controller", :type => :controller do
 
     it "displays the menu name" do
       get "/menus/#{menu.id}"
+      menu.name
       expect(last_response.body).to include(menu.name)
     end
 
@@ -60,13 +61,16 @@ describe "Menus Controller", :type => :controller do
       get "/menus/#{menu.id}"
       expect(last_response.body).to include(menu.description)
     end
+
     it "displays the menu start and end dates" do
       get "/menus/#{menu.id}"
       expect(last_response.body).to include(menu.start_at.strftime("%d-%m-%Y")  && menu.end_at.strftime("%d-%m-%Y") )
     end
+
     it "displays a list of all menu items" do
       get "/menus/#{menu.id}"
       expect(last_response.body).to include("Hamburger")
+      expect(menu.menu_items.size).to eq 5
     end
   end
 end
